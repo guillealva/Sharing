@@ -24,11 +24,13 @@ export class AskButtonComponent  implements OnInit{
   sendMessage(){
 
     const userMessage = this.dataService.getMessage();
-    this.dataService.getResponseGPT(this.prompt).subscribe();
-    console.log(userMessage);
-  }
+    this.dataService.getResponseGPT().subscribe(resp => {
+      this.response = resp;
+    });
 
   }
+
+}
 
 
 

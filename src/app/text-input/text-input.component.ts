@@ -25,8 +25,9 @@ export class TextInputComponent {
         map(msg => msg.trim()) // Remueve espacios en blanco de los extremos
       )
       .subscribe(cleanMessage => {
-        this.chatgptSvc.setMessage(cleanMessage);
+        this.chatgptSvc.setMessage(this.message.trim());
       });
+
   }
   
 

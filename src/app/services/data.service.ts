@@ -24,11 +24,16 @@ export class DataService {
 
   constructor() {}
 
-  getResponseGPT(text: string) {
+  getResponseGPT() {
     return from(this.openai.chat.completions.create({
-      messages: [{
-        role: "system",
-        content: text
+      messages: [
+        {
+          role: "system",
+          content: "You are a helpful assistant that speaks Spanish."
+        },
+        {
+          role: "user",
+          content: this.userMessage
       }],
       model: "gpt-3.5-turbo",
       temperature: 0.7,
