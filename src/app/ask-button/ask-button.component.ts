@@ -23,13 +23,9 @@ export class AskButtonComponent  implements OnInit{
 
   sendMessage(){
 
-    this.dataService.getResponseGPT(this.prompt).subscribe(
-      resp => {
-        this.response = resp;
-        // Aquí puedes guardar la respuesta en alguna otra parte, como en un servicio global o en local storage, para ser leído por otros componentes.
-      }
-    );
-    this.prompt = '';
+    const userMessage = this.dataService.getMessage();
+    this.dataService.getResponseGPT(this.prompt).subscribe();
+    console.log(userMessage);
   }
 
   }

@@ -1,47 +1,45 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { filter, from, map } from 'rxjs';
-//------------------------------------------------------------------------------------------
+import { filter, from, map, BehaviorSubject } from 'rxjs'; // <-- Añade BehaviorSubject aquí
 import { OpenAI } from 'openai';
 import { environment } from 'src/environments/environment';
 
-const APIKEY = process.env['OPENAI_API_KEY'];
-
+const APIKEY = environment.apiKey;
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class DataService {
 
   readonly openai = new OpenAI({
     apiKey: APIKEY,
-  })
+    dangerouslyAllowBrowser: true,
+  });
+
   private userMessage: string = '';
 
+  // Añade estas líneas para manejar la respuesta
+  private responseSource = new BehaviorSubject<string | null>(null);
+  currentResponse$ = this.responseSource.asObservable();
 
   constructor() {}
 
-  
-  getResponseGPT (text: string){
-
+  getResponseGPT(text: string) {
     return from(this.openai.chat.completions.create({
-      messages: [{ 
-        role: "user", 
-        content:text 
+      messages: [{
+        role: "system",
+        content: text
       }],
       model: "gpt-3.5-turbo",
-      temperature:0.7,
-
+      temperature: 0.7,
     })).pipe(
-
       filter(resp => resp.choices && resp.choices.length > 0 && !!resp.choices[0].message.content),
-      map(resp => resp.choices[0].message.content)
-
-    )
-    
-
+      map(resp => {
+        // Emite la respuesta a través del BehaviorSubject
+        this.responseSource.next(resp.choices[0].message.content);
+        return resp.choices[0].message.content;
+      })
+    );
   }
 
   setMessage(message: string): void {
@@ -51,16 +49,4 @@ export class DataService {
   getMessage(): string {
     return this.userMessage;
   }
-
 }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
