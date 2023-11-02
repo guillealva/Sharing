@@ -1,0 +1,7 @@
+.last-response {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 10px; /* Para separarla de las respuestas anteriores */
+  }
+  

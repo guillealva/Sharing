@@ -11,16 +11,16 @@ export class AnswerOutputComponent {
   
   
   public response: string | null = null; // Variable para almacenar la respuesta
+  public latestResponse: string | null = null;
 
   constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
-    // Escuchamos los cambios en la respuesta y actualizamos nuestro componente en consecuencia
-    this.dataService.currentResponse$.subscribe(res => {
-      this.response = res;
+  ngOnInit() {
+    this.dataService.latestResponse$.subscribe(response => {
+        this.latestResponse = response;
     });
-    
   }
+
 
   
 }

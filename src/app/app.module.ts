@@ -8,6 +8,8 @@ import { AskButtonComponent } from './ask-button/ask-button.component';
 import { DataService } from './services/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AnswerOutputComponent } from './answer-output/answer-output.component';
+import { PreviousAnswersComponent } from './previous-answers/previous-answers.component';
+import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { AnswerOutputComponent } from './answer-output/answer-output.component';
     AppComponent,
     TextInputComponent,
     AskButtonComponent,
-    AnswerOutputComponent
+    AnswerOutputComponent,
+    PreviousAnswersComponent,
+    LoadingIndicatorComponent
   ],
   imports: [
     BrowserModule,
