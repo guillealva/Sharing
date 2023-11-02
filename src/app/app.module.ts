@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TextInputComponent } from './text-input/text-input.component';
 import { AskButtonComponent } from './ask-button/ask-button.component';
-import { DataService } from './data.service';
+import { DataService } from './services/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AnswerOutputComponent } from './answer-output/answer-output.component';
 

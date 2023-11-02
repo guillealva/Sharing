@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { DataService } from '../data.service'
+import { DataService } from '../services/data.service';
+import { filter, from, map } from 'rxjs';
 
 
 
@@ -13,12 +14,20 @@ import { DataService } from '../data.service'
 export class TextInputComponent {
 
 
-  userInput: string = '';
+  message: string = '';
 
-  constructor(private sharedDataService: DataService) { }
+  constructor(private chatgptSvc: DataService) { }
 
   onInputChange() {
-    this.sharedDataService.setUserInput(this.userInput);
+    from([this.message])
+      .pipe(
+        filter(msg => msg.length > 0), // Filtra los mensajes que no estén vacíos
+        map(msg => msg.trim()) // Remueve espacios en blanco de los extremos
+      )
+      .subscribe(cleanMessage => {
+        this.chatgptSvc.setMessage(cleanMessage);
+      });
   }
+  
 
 }

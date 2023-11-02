@@ -1,27 +1,43 @@
 const express = require('express');
-const OpenAIApi = require('openai');
+const openai = require('openai');
+const OPENAI_API_KEY = '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';
+const bodyParser = require( 'body-parser');
 
+// Inicializa el servidor express y abre el puerto 3000 para comunicación interna de la app
 const app = express();
-const openai = new OpenAIApi({ key: 'YOUR_OPENAI_API_KEY' });
+const PORT = process.env.PORT || 3000;
 
-// Sirve tu aplicación Angular
-app.use(express.static('path-to-your-angular-dist-folder'));
 
-// Endpoint para hacer la consulta a OpenAI
-app.post('/ask-openai', async (req, res) => {
-  try {
-    const prompt = req.body.prompt;
-    const response = await openai.complete({
-      engine: 'davinci',
-      prompt: prompt
-    });
-    
-    res.json(response.data.choices[0].text);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
+// Para procesar el body de las peticiones POST
+app.use(bodyParser.json());
+
+// Definición del endpoint del servidor para las llamadas
+app.post('/api/messages', (req, res) => {
+  const userMessage = req.body.message;
+  // Process userMessage and interact with OpenAI
+  // Return chatbot response
+  const chatbotResponse = "Hello! I'm your chatbot.";
+  res.json({ response: chatbotResponse });
 });
 
-app.listen(3000, () => {
-  console.log('Server started on http://localhost:3000');
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
