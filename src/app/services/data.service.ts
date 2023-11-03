@@ -29,16 +29,25 @@ export class DataService {
   public isLoading$ = this._isLoading.asObservable();
   
   private _userMessage = new BehaviorSubject<string|null>(null);
+
+  private _systemMessage = new BehaviorSubject<string>('You are a helpful assistant that speaks Spanish');
+
+  public selectedButton: string | null = null;
+
+
   
   getResponseGPT() {
     console.log("Antes de hacer la petición:", this._isLoading.value); // debería ser false
     this._isLoading.next(true); 
 
+    const currentSystemMessage = this._systemMessage.value;
+
+
     return from(this.openai.chat.completions.create({
       messages: [
         {
           role: "system",
-          content: "You are a helpful assistant that speaks Spanish. And you can only provide information when you've been asked about what recipe, ingredients, foods, restaurants or something related directly with the wine fit btetter with some wine. Every question out of theese params, the answer has to be: Lo siento no puedo ayudarte más alla de los vinos"
+          content: currentSystemMessage
         },
         {
           role: "user",
@@ -71,6 +80,25 @@ export class DataService {
     return this._userMessage.value || ''; 
   }
 
+  // Método para obtener el mensaje del sistema actual
+  getSystemMessage(): string {
+    return this._systemMessage.value;
+  }
+
+  // Método para establecer el mensaje del sistema
+  setSystemMessage(message: string): void {
+    this._systemMessage.next(message);
+  }
+
+  setSelectedButton(buttonId: string): void {
+    this.selectedButton = buttonId;
+  }
+
+  getSelectedButton(): string | null {
+    return this.selectedButton;
+  }
+
+
   public addResponse(response: string): void {
     const previousAnswers = this._previousAnswers.value;
 
@@ -86,10 +114,10 @@ export class DataService {
 
     // Establece la nueva respuesta como la respuesta más reciente.
     this._latestResponse.next(response);
-}
+  }
 
-public get previousAnswers(): string[] {
+  public get previousAnswers(): string[] {
   return this._previousAnswers.value;
-}
+  }
 
 }

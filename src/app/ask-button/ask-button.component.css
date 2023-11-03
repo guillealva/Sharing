@@ -9,8 +9,9 @@
 
   button {
     appearance: none;
-    height: 47px;
-    background-color:rgb(211, 211, 211);
+    height: 44px;
+    background-color:rgb(142, 142, 142);
+    border-radius: 0 15px 15px 0;
     border-width: 0;
     box-sizing: border-box;
     color: #000000;
@@ -41,7 +42,8 @@
   button:before {
     animation: opacityFallbackOut .5s step-end forwards;
     backface-visibility: hidden;
-    background-color: #8b8b8b;
+    border-radius: 0 15px 15px 0;
+    background-color: rgb(208, 91, 13);
     clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
     content: "";
     height: 100%;

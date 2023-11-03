@@ -3,33 +3,31 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #04225f;
+    background-color: rgb(4, 34, 95);
     width: 100%;
     height: 1080px;
     text-align: center;
+    padding: 30px;
 
 }
 
 h1 {
 
-    color: aliceblue;
+    color: #e3e3e3;
     font-family:  Helvetica, sans-serif;
 
 } 
 
+h2 {
+
+    color: #abb8c3; 
+    font-family:  Helvetica, sans-serif;
+
+}
+
 app-text-input{
 
     display: flex;
-
-}
-.input-button-area{
-
-    display: flex; /* Usa Flexbox para alinear horizontalmente los elementos */
-    justify-content: space-between; /* Asegura que los elementos estén separados por la máxima distancia posible */
-    width: 80%; /* Ancho del contenedor */
-    height: 50px; /* Alto del contenedor */
-    margin: 0 auto; /* Centra el contenedor en la pantalla (opcional) */
-    padding: 30px;
 
 }
 
@@ -40,5 +38,34 @@ app-loading-indicator {
     align-items: center;
     height: 20px;
     width: 100%;
+
+}
+
+.input-button-area{
+
+    display: flex; /* Usa Flexbox para alinear horizontalmente los elementos */
+    justify-content: center; /* Asegura que los elementos estén separados por la máxima distancia posible */
+    width: 80%; /* Ancho del contenedor */
+    height: 50px; /* Alto del contenedor */
+    margin: 0 auto; /* Centra el contenedor en la pantalla (opcional) */
+    padding: 30px;
+
+}
+
+.logo {
+
+    height: 70px;
+    width: 180px;
+    margin: 30px;
+}
+
+.product-selection {
+
+    width: 100%;
+    height: 150px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
 
 }

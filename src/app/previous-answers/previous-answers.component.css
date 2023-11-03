@@ -1,9 +1,15 @@
 .response {
 
-    background-color: lightgray;
-    border-radius: 15px;
-    padding: 20px;
-    margin: 40px;
-    font-family: Helvetica;
-  }
+  background-color: rgb(130, 130, 130);
+  border-radius: 15px;
+  padding: 20px;
+  margin-left: 70px;
+  margin-top: 20px;
+  margin-right: 70px;
+  color: rgb(62, 62, 62);
+  font-family: Helvetica;
+  opacity: 0.5;
+
+}
   
+

@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AnswerOutputComponent } from './answer-output/answer-output.component';
 import { PreviousAnswersComponent } from './previous-answers/previous-answers.component';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
+import { BehaviourButtonKioskComponent } from './behaviour-button-kiosk/behaviour-button-kiosk.component';
+import { BehaviourButtonWinesComponent } from './behaviour-button-wines/behaviour-button-wines.component';
+import { BehaviourButtonNsignComponent } from './behaviour-button-nsign/behaviour-button-nsign.component';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator
     AskButtonComponent,
     AnswerOutputComponent,
     PreviousAnswersComponent,
-    LoadingIndicatorComponent
+    LoadingIndicatorComponent,
+    BehaviourButtonKioskComponent,
+    BehaviourButtonWinesComponent,
+    BehaviourButtonNsignComponent
   ],
   imports: [
     BrowserModule,
