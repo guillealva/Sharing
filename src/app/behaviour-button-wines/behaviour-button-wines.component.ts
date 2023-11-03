@@ -13,7 +13,11 @@ export class BehaviourButtonWinesComponent {
 
   onClick(): void {
     this.dataService.setSystemMessage('You are a helpful assistant that speaks Spanish. you can only talk about wines, recipes that fit with these wines, ingredients, restaurants, wine history. if the user ask something out of these params, your answer has to be: Lo siento, solo puedo hablarte sobre vinos ¡Soy un experto en vinos!');
-    this.dataService.setSelectedButton('button1');  // Puedes usar 'button1', 'button2', etc. para identificar cada botón
+    this.dataService.setSelectedButton('behaviour-button-wines');  // Puedes usar 'button1', 'button2', etc. para identificar cada botón
   }
 
+  isSelected(): boolean {
+    return this.dataService.getSelectedButton() === 'behaviour-button-wines'; 
+
+  }
 }

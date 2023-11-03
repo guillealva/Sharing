@@ -1,9 +1,7 @@
 button img {
 
-    height: 125px;
-    width: 125px; 
-    opacity: 0.5;  
-    transition: opacity 0.3s ease;  
+    height: 100%;
+    width: 100%; 
 
 }
 
@@ -13,24 +11,23 @@ button {
     height: 125px;
     width: 125px; 
     transition-duration: 0.4s;
+    padding:0 !important;
+    opacity: 0.5;  
+
 
 
 }
 
 
-button.selected img {
+button.selected  {
     opacity: 1;  
 }
 
-button:hover {
-
-    border: 4px;
-    border-color: white;
-
-}
 
 button:hover {
-    height: 135px;
-    width: 135px; 
+
+    transform: scale(1.2);
+    transform-origin: center;
+    cursor: pointer;
 
 }

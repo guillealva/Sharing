@@ -66,6 +66,6 @@ app-loading-indicator {
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-    align-content: center;
-
+    align-items: center;    
+    margin-top: 10px;    
 }

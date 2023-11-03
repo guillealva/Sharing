@@ -29,17 +29,17 @@ export class DataService {
   public isLoading$ = this._isLoading.asObservable();
   
   private _userMessage = new BehaviorSubject<string|null>(null);
-
   private _systemMessage = new BehaviorSubject<string>('You are a helpful assistant that speaks Spanish');
 
-  public selectedButton: string | null = null;
+  // BehaviorSubject para controlar el botón seleccionado
+  private _selectedButton = new BehaviorSubject<string|null>(null);
 
 
   
   getResponseGPT() {
     console.log("Antes de hacer la petición:", this._isLoading.value); // debería ser false
+    
     this._isLoading.next(true); 
-
     const currentSystemMessage = this._systemMessage.value;
 
 
@@ -80,22 +80,23 @@ export class DataService {
     return this._userMessage.value || ''; 
   }
 
-  // Método para obtener el mensaje del sistema actual
-  getSystemMessage(): string {
+   // Métodos relacionados con el mensaje del sistema
+   getSystemMessage(): string {
     return this._systemMessage.value;
   }
 
-  // Método para establecer el mensaje del sistema
   setSystemMessage(message: string): void {
     this._systemMessage.next(message);
   }
 
   setSelectedButton(buttonId: string): void {
-    this.selectedButton = buttonId;
+    this._selectedButton.next(buttonId); // Cambio: usa next() para actualizar el valor del BehaviorSubject
+    console.log("boton pulsado:", this._selectedButton.value); // debería ser false
+
   }
 
   getSelectedButton(): string | null {
-    return this.selectedButton;
+    return this._selectedButton.value;  // Devuelve el valor actual del BehaviorSubject
   }
 
 
